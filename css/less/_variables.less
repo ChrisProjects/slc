@@ -1,0 +1,134 @@
+//
+// Variables
+// ------------------------------------------------------------------------------------------------
+
+// Global values
+// ------------------------------------------------------------------------------------------------
+
+// Typography
+// ------------------------------------------------------------------------------------------------
+
+@clFontStyle:           "Helvetica Neue", Helvetica, Arial, sans-serif;// "Champagne & Limousines",
+
+@bigFontSize:           45px;
+
+// image urls -------------------------------------------------------------------------------------
+
+@spriteImgUrl:          url(../img/sprite.png) 100px 100px no-repeat;
+
+// font families ------------------------------------------------------------------------
+
+@headerFontStyle:        'Champagne & Limousines', Arial, sans-serif;
+@bodyFontStyle:          'Helvetica Neue', Arial, sans-serif;
+
+// font sizes ---------------------------------------------------------------------------
+
+@bigHeaderSize:     64px;
+@normalHeaderSize:  32px;
+@smallHeaderSize:   22px;
+@bigBodySize:       18px;
+@normalBodySize:    13px;
+@smallBodySize:     12px;
+
+// font colors --------------------------------------------------------------------------
+
+@spanColor:         #888888;
+@headerColor:       #545454;
+@bodyColor:         #777777;
+@blue:              #0F7FBF;
+
+// colors -------------------------------------------------------------------------------
+
+@lightGray:         #EEEEEE;
+@gray:              #DDDDDD;
+@darkGray:          #C0C0C0;
+@gray97:            #F7F7F7;
+@white:             #FFFFFF;
+
+// icons ------------------------------------------------------------------------------------------
+
+.icons(@width,@height,@position: 0 0,@margin: 0,@padding: 0){
+  display: inline-block !important;
+  width: @width;
+  height: @height;
+  background-position: @position;
+  margin: @margin;
+  padding: @padding;
+  vertical-align: middle;
+}
+
+.fontCommon(@fontStyle: @bodyFontStyle, @fontSize: @normalBodySize, @fontColor: @gray, @fontWeight: normal, @lineHeight:@normalBodySize){
+  font-family: @fontStyle;
+  font-size: @fontSize;
+  color: @fontColor;
+  font-weight: @fontWeight;
+  line-height: @lineHeight;
+  margin: 0;
+  padding: 0;
+}
+
+// gradient -----------------------------------------------------------------------------
+.gradientHorizontal(@startColor: #555, @endColor: #333) {
+  background-color: @endColor;
+  background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+  background-image: linear-gradient(to right, @startColor, @endColor); // Standard, IE10
+  background-repeat: repeat-x;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@startColor),argb(@endColor))); // IE9 and down
+}
+
+.gradientUpperLeft (@startColor,@endColor) {
+  background-image: -moz-linear-gradient(left top 315deg, @startColor, @endColor);
+  background-image: -webkit-gradient(linear, left top, right bottom, from(@startColor), to(@endColor));
+  background-image: -webkit-linear-gradient(top, @startColor, @endColor);
+  background-image: -o-linear-gradient(top, @startColor, @endColor);
+  background-image: linear-gradient(to bottom, @startColor, @endColor);
+}
+
+.gradientSupper(@startColor, @middleColor, @endColor) {
+  background-image: -moz-linear-gradient(top, @startColor, @middleColor, @endColor);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor));
+  background-image: -webkit-linear-gradient(top, @startColor, @middleColor, @endColor);
+  background-image: -o-linear-gradient(top, @startColor, @middleColor, @endColor);
+  background-image: linear-gradient(to bottom, @startColor, @middleColor, @endColor);
+  background-repeat: repeat-x;
+}
+.gradient(@startColor, @endColor) {
+  background: -moz-linear-gradient(top,  @startColor 0%, @endColor 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@startColor, color-stop(100%,@endColor))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  @startColor 0%,@endColor 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  @startColor 0%,@endColor 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  @startColor 0%,@endColor 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  @startColor 0%,@endColor 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@startColor, endColorstr=@endColor,GradientType=0 ); /* IE6-9 */
+}
+.border-gradient(@startColor, @middleColor, @endColor) {
+  border-color: -moz-linear-gradient(top, @startColor, @middleColor, @endColor);
+  border-color: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor));
+  border-color: -webkit-linear-gradient(top, @startColor, @middleColor, @endColor);
+  border-color: -o-linear-gradient(top, @startColor, @middleColor, @endColor);
+  border-color: linear-gradient(to bottom, @startColor, @middleColor, @endColor);
+}
+// rounded corners ----------------------------------------------------------------------
+
+.rounded-corners (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+// box shadows --------------------------------------------------------------------------
+
+.box-shadow(@style, @c) when (iscolor(@c)) {
+  box-shadow: @style @c;
+  -webkit-box-shadow: @style @c;
+  -moz-box-shadow: @style @c;
+}
+
+.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
+  .box-shadow(@style, rgba(0, 0, 0, @alpha));
+}
